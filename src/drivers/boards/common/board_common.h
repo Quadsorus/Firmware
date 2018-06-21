@@ -882,8 +882,10 @@ __EXPORT bool px4_i2c_bus_external(int bus);
 
 #else
 
-#ifdef PX4_I2C_BUS_ONBOARD
-#define px4_i2c_bus_external(bus) (bus != PX4_I2C_BUS_ONBOARD)
+#if defined(PX4_I2C_BUS_ONBOARD) && !defined(PX4_I2C_BUS_ONBOARD_AND_EXT)
+#define px4_i2c_bus_external(bus) ((bus) != PX4_I2C_BUS_ONBOARD)
+#elif defined(PX4_I2C_BUS_ONBOARD) && defined(PX4_I2C_BUS_ONBOARD_AND_EXT)
+#define px4_i2c_bus_external(bus) (((bus) == PX4_I2C_BUS_ONBOARD_AND_EXT) || ((bus) != PX4_I2C_BUS_ONBOARD))
 #else
 #define px4_i2c_bus_external(bus) true
 #endif /* PX4_I2C_BUS_ONBOARD */
