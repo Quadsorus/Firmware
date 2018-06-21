@@ -1440,7 +1440,7 @@ struct hmc5883_bus_option {
 #ifdef PX4_I2C_BUS_EXPANSION2
 	{ HMC5883_BUS_I2C_EXTERNAL, "/dev/hmc5883_ext2", &HMC5883_I2C_interface, PX4_I2C_BUS_EXPANSION2, NULL },
 #endif
-#ifdef PX4_I2C_BUS_ONBOARD
+#if defined(PX4_I2C_BUS_ONBOARD) && !defined(PX4_I2C_BUS_ONBOARD_AND_EXT)
 	{ HMC5883_BUS_I2C_INTERNAL, "/dev/hmc5883_int", &HMC5883_I2C_interface, PX4_I2C_BUS_ONBOARD, NULL },
 #endif
 #ifdef PX4_SPIDEV_HMC
