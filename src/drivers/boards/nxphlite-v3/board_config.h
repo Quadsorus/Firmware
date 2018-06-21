@@ -262,7 +262,8 @@ __BEGIN_DECLS
 
 #define PX4_I2C_BUS_EXPANSION               PX4_BUS_NUMBER_TO_PX4(0)
 #define PX4_I2C_BUS_ONBOARD                 PX4_BUS_NUMBER_TO_PX4(1)
-
+#define PX4_I2C_BUS_ONBOARD_AND_EXT         PX4_BUS_NUMBER_TO_PX4(1)      // On V3RC15 P3 is used as EXT but is "Onboard"
+#define PX4_I2C_BUS_EXPANSION1              PX4_I2C_BUS_ONBOARD_AND_EXT   // Descrimination is doen by
 #define PX4_I2C_BUS_LED                     PX4_I2C_BUS_EXPANSION
 
 /*
